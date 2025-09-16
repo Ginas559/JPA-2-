@@ -3,10 +3,16 @@ package vn.iotstar.entity;
 import java.io.Serializable;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.util.List;
 
 @Entity
+@AllArgsConstructor
+//@NoArgsConstructor
+@Data
 @Table(name = "categories") //ten nay se duoc xuat hien trong bang cua database
 @NamedQuery(name = "Category.findAll", query = "SELECT c FROM Category c") //hien thi no len
 public class Category implements Serializable{
