@@ -2,6 +2,9 @@ package vn.iotstar.services.impl;
 
 import java.util.List;
 
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.TypedQuery;
+import vn.iotstar.configs.JPAConfig;
 import vn.iotstar.dao.CategoryDao;
 import vn.iotstar.dao.impl.CategoryDaoImpl;
 import vn.iotstar.entity.Category;
@@ -25,9 +28,15 @@ public class CategoryServiceImpl implements CategoryService{
 
 	@Override
 	public List<Category> findByCategoryname(String catname) {
-		// TODO Auto-generated method stub
+//	    EntityManager em = JPAConfig.getEntityManager();
+//	    String jpql = "SELECT c FROM Category c WHERE c.categoryname LIKE :catname";
+//	    TypedQuery<Category> query = em.createQuery(jpql, Category.class);
+//	    query.setParameter("catname", "%" + catname + "%");
+//	    return query.getResultList();
+		
 		return cateDao.findByCategoryname(catname);
 	}
+
 
 	@Override
 	public List<Category> findAll() {

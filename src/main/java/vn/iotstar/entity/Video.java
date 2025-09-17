@@ -1,24 +1,19 @@
 package vn.iotstar.entity;
 
 import java.io.Serializable;
-
 import jakarta.persistence.*;
-
 import java.util.List;
 
 @Entity
 @Table(name="videos")
 @NamedQuery(name="Video.findAll", query="select c from Video c")
 public class Video implements Serializable{
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	
 	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "VideoId")
-    private String videoId;
+    private int videoId;
 
     @Column(name = "Active")
     private int active;
@@ -43,11 +38,11 @@ public class Video implements Serializable{
 	public Video() {
 	}
 
-	public String getVideoId() {
+	public int getVideoId() {
 		return videoId;
 	}
 
-	public void setVideoId(String videoId) {
+	public void setVideoId(int videoId) {
 		this.videoId = videoId;
 	}
 
@@ -99,6 +94,7 @@ public class Video implements Serializable{
 		this.category = category;
 	}
     
-    
-
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 }
