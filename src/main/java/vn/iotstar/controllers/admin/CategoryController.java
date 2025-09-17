@@ -40,7 +40,7 @@ public class CategoryController extends HttpServlet {
         resp.setCharacterEncoding("UTF-8");
         String url = req.getRequestURI();
 
-        if (url.contains("categories")) {
+        if (url.contains("/admin/categories")) {
             List<Category> list = cateService.findAll();
             req.setAttribute("listcate", list);
             req.getRequestDispatcher("/views/admin/category-list.jsp").forward(req, resp);
@@ -87,12 +87,13 @@ public class CategoryController extends HttpServlet {
             String fileold = (cateold != null) ? cateold.getImages() : null;
 
             String fname = "";
-            String uploadPath = Constant.UPLOAD_DIRECTORY;
-            File uploadDir = new File(uploadPath);
-            if (!uploadDir.exists()) {
-                uploadDir.mkdir();
-            }
+//            String uploadPath = Constant.UPLOAD_DIRECTORY;
+//            File uploadDir = new File(uploadPath);
+//            if (!uploadDir.exists()) {
+//                uploadDir.mkdir();
+//            }
 
+            //phan load anh
             try {
                 Part part = req.getPart("images");
                 if (part != null && part.getSize() > 0) {
@@ -100,15 +101,26 @@ public class CategoryController extends HttpServlet {
                     int index = filename.lastIndexOf(".");
                     String ext = filename.substring(index + 1);
                     fname = System.currentTimeMillis() + "." + ext;
+
+                    // lưu vào thư mục webapp/images
+                    String uploadPath = req.getServletContext().getRealPath("/images");
+                    File uploadDir = new File(uploadPath);
+                    if (!uploadDir.exists()) {
+                        uploadDir.mkdir();
+                    }
+
                     part.write(uploadPath + File.separator + fname);
+
                     category.setImages(fname);
                 } else {
+                    // nếu không upload mới thì giữ ảnh cũ hoặc dùng avata.png
                     category.setImages(fileold != null ? fileold : "avata.png");
                 }
             } catch (Exception e) {
                 e.printStackTrace();
-                category.setImages(fileold);
+                category.setImages(fileold != null ? fileold : "avata.png");
             }
+
 
             cateService.update(category);
             resp.sendRedirect(req.getContextPath() + "/admin/categories");

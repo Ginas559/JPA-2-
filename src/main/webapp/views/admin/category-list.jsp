@@ -21,7 +21,8 @@
                 <c:if test="${cate.images.substring(0, 5) != 'https'}">
                     <c:url value="/image?fname=${cate.images}" var="imgUrl"/>
                 </c:if>
-                <img src="${imgUrl}" height="50"/>
+                <img src="<c:url value='/images/${cate.images}'/>" width="150"/>
+
             </td>
             <td>${cate.categoryname}</td>
             <td>
@@ -31,8 +32,13 @@
                 </c:choose>
             </td>
             <td>
-                <a href="<c:url value='/admin/category/edit?id=${cate.categoryid}'/>">Edit</a>
-                <a href="<c:url value='/admin/category/delete?id=${cate.categoryid}'/>">Delete</a>
+                <a href="<c:url value='/admin/category/edit'>
+                            <c:param name='id' value='${cate.categoryId}'/>
+                         </c:url>">Edit</a>
+                |
+                <a href="<c:url value='/admin/category/delete'>
+                            <c:param name='id' value='${cate.categoryId}'/>
+                         </c:url>">Delete</a>
             </td>
         </tr>
     </c:forEach>
