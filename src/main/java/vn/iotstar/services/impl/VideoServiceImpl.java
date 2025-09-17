@@ -49,4 +49,9 @@ public class VideoServiceImpl implements VideoService {
 	public int count() {
 		return videoDao.count();
 	}
+	
+	@Override
+	public List<Video> findByCategoryId(int categoryId) {
+	    return videoDao.findByCategoryId(categoryId);
+	}
 }

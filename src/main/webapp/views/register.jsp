@@ -13,19 +13,25 @@
     </c:if>
     <form action="<c:url value='/register'/>" method="post">
         <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br><br>
+        <input type="text" id="username" name="username" value="${param.username}"><br><br>
         
         <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br><br>
+        <input type="email" id="email" name="email" value="${param.email}"><br><br>
         
         <label for="password">Password:</label><br>
         <input type="password" id="password" name="password"><br><br>
         
         <label for="phone">Phone:</label><br>
-        <input type="text" id="phone" name="phone"><br><br>
+        <input type="text" id="phone" name="phone" value="${param.phone}"><br><br>
         
         <label for="images">Image URL:</label><br>
-        <input type="text" id="images" name="images"><br><br>
+        <input type="text" id="images" name="images" value="${param.images}"><br><br>
+        
+        <label for="role">Role:</label><br>
+        <select id="role" name="role">
+            <option value="user">User</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
         
         <input type="submit" value="Đăng ký">
     </form>

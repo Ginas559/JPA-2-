@@ -12,4 +12,5 @@ public interface VideoDao {
 	List<Video> findByTitle(String title);
 	List<Video> findAll(int page, int pagesize);
 	int count();
+	List<Video> findByCategoryId(int categoryId);
 }

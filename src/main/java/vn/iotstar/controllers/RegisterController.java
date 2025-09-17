@@ -33,6 +33,7 @@ public class RegisterController extends HttpServlet {
 		String password = req.getParameter("password");
 		String phone = req.getParameter("phone");
 		String images = req.getParameter("images");
+		String role = req.getParameter("role");
 
 		// Kiểm tra username đã tồn tại chưa
 		User existingUser = userService.findByUsername2(username);
@@ -49,8 +50,8 @@ public class RegisterController extends HttpServlet {
 		user.setPassword(password);
 		user.setPhone(phone);
 		user.setImages(images); // Lưu đường dẫn ảnh
-		user.setRole("user"); 
-		user.setStatus(1); 
+		user.setRole(role); // Lấy role từ form
+		user.setStatus(1);
 
 		userService.insert(user);
 		

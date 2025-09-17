@@ -49,4 +49,6 @@
             </td>
         </tr>
     </c:forEach>
+    <br>
+    <a href="<c:url value='/admin/dashboard'/>">Quay lại Admin Dashboard</a>
 </table>

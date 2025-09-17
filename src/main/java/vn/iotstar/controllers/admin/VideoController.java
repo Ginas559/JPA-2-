@@ -33,10 +33,15 @@ public class VideoController extends HttpServlet {
 		if (url.contains("/admin/videos")) {
 			String action = req.getParameter("action");
 			String keyword = req.getParameter("keyword");
+			String categoryIdParam = req.getParameter("categoryId");
 
 			if ("search".equals(action) && keyword != null && !keyword.isEmpty()) {
 				List<Video> searchResults = videoService.findByTitle(keyword);
 				req.setAttribute("listvideo", searchResults);
+			} else if ("filter".equals(action) && categoryIdParam != null && !categoryIdParam.isEmpty()) {
+				int categoryId = Integer.parseInt(categoryIdParam);
+				List<Video> filteredResults = videoService.findByCategoryId(categoryId);
+				req.setAttribute("listvideo", filteredResults);
 			} else {
 				List<Video> list = videoService.findAll();
 				req.setAttribute("listvideo", list);

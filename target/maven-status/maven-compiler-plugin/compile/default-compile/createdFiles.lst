@@ -11,6 +11,7 @@ vn\iotstar\services\impl\CategoryServiceImpl.class
 vn\iotstar\controllers\LogoutController.class
 vn\iotstar\controllers\admin\UserController.class
 vn\iotstar\controllers\HomeController.class
+vn\iotstar\controllers\user\UserProfileController.class
 vn\iotstar\entity\User.class
 vn\iotstar\controllers\LoginController.class
 vn\iotstar\utils\Constant.class
@@ -23,6 +24,7 @@ vn\iotstar\filters\AdminFilter.class
 vn\iotstar\configs\Test.class
 vn\iotstar\services\impl\VideoServiceImpl.class
 vn\iotstar\dao\UserDao.class
+vn\iotstar\controllers\user\UserVideoController.class
 vn\iotstar\services\UserService.class
 vn\iotstar\dao\impl\CategoryDaoImpl.class
 vn\iotstar\dao\VideoDao.class
