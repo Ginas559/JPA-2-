@@ -1,50 +1,96 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
-<a href="<c:url value='/admin/user/add'/>">Add user</a>
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Quản lý Người dùng</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-4 text-center text-primary">Quản lý Người dùng</h2>
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <a href="<c:url value='/admin/dashboard'/>" class="btn btn-secondary">
+                <i class="bi bi-arrow-left me-2"></i>Quay lại Dashboard
+            </a>
+            <a href="<c:url value='/admin/user/add'/>" class="btn btn-primary">
+                <i class="bi bi-person-plus-fill me-2"></i>Thêm người dùng
+            </a>
+        </div>
 
-<form action="${pageContext.request.contextPath}/admin/users" method="get" style="margin: 10px 0;">
-    <input type="hidden" name="action" value="search" />
-    <input type="text" name="keyword" placeholder="Nhập username..." value="${param.keyword}" />
-    <button type="submit">Tìm kiếm</button>
-</form>
+        <form action="${pageContext.request.contextPath}/admin/users" method="get" class="d-flex mb-4">
+            <input type="hidden" name="action" value="search" />
+            <input type="text" class="form-control me-2" name="keyword" placeholder="Nhập username..." value="${param.keyword}" />
+            <button type="submit" class="btn btn-outline-primary">
+                <i class="bi bi-search me-2"></i>Tìm kiếm
+            </button>
+        </form>
 
-<a href="<c:url value='/admin/users'/>">Quay lại danh sách đầy đủ</a>
+        <a href="<c:url value='/admin/users'/>" class="btn btn-outline-info mb-4">
+            <i class="bi bi-list-ul me-2"></i>Danh sách đầy đủ
+        </a>
 
-<table border="1">
-    <tr>
-        <th>STT</th>
-        <th>User ID</th>
-        <th>Username</th>
-        <th>Email</th>
-        <th>Role</th>
-        <th>Status</th>
-        <th>Action</th>
-    </tr>
-    <c:forEach items="${listuser}" var="user" varStatus="STT">
-        <tr>
-            <td>${STT.index+1}</td>
-            <td>${user.userId}</td>
-            <td>${user.username}</td>
-            <td>${user.email}</td>
-            <td>${user.role}</td>
-            <td>
-                <c:choose>
-                    <c:when test="${user.status == 1}">Hoạt động</c:when>
-                    <c:otherwise>Không hoạt động</c:otherwise>
-                </c:choose>
-            </td>
-            <td>
-                <a href="<c:url value='/admin/user/edit'>
-                            <c:param name='id' value='${user.userId}'/>
-                         </c:url>">Edit</a>
-                |
-                <a href="<c:url value='/admin/user/delete'>
-                            <c:param name='id' value='${user.userId}'/>
-                         </c:url>">Delete</a>
-            </td>
-        </tr>
-    </c:forEach>
-    <br>
-    <a href="<c:url value='/admin/dashboard'/>">Quay lại Admin Dashboard</a>
-</table>
+        <div class="table-responsive">
+            <table class="table table-striped table-hover align-middle text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th scope="col">STT</th>
+                        <th scope="col">User ID</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Role</th>
+                        <th scope="col">Trạng thái</th>
+                        <th scope="col">Hành động</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <c:forEach items="${listuser}" var="user" varStatus="STT">
+                        <tr>
+                            <td>${STT.index+1}</td>
+                            <td>${user.userId}</td>
+                            <td>${user.username}</td>
+                            <td>${user.email}</td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${user.role == 'admin'}">Admin</c:when>
+                                    <c:otherwise>Người dùng</c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <c:choose>
+                                    <c:when test="${user.status == 1}">
+                                        <span class="badge bg-success">Hoạt động</span>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <span class="badge bg-danger">Không hoạt động</span>
+                                    </c:otherwise>
+                                </c:choose>
+                            </td>
+                            <td>
+                                <a href="<c:url value='/admin/user/edit'>
+                                            <c:param name='id' value='${user.userId}'/>
+                                         </c:url>" class="btn btn-warning btn-sm me-2">
+                                    <i class="bi bi-pencil-square"></i>
+                                </a>
+                                <a href="<c:url value='/admin/user/delete'>
+                                            <c:param name='id' value='${user.userId}'/>
+                                         </c:url>" class="btn btn-danger btn-sm" onclick="return confirm('Bạn có chắc chắn muốn xóa người dùng này không?');">
+                                    <i class="bi bi-trash"></i>
+                                </a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
