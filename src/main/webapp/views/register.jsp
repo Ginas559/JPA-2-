@@ -44,7 +44,7 @@
                                 <label for="phone" class="form-label">Số điện thoại:</label>
                                 <input type="text" class="form-control" id="phone" name="phone" value="${param.phone}">
                             </div>
-                            
+                            <h2>Dùng abc.jpg hoặc def.jpg - em dùng 3 cách up ảnh, cách này là liệt kê tên ảnh trong /webapp/images, hai cách còn lại trong category-add và video-add)</h2>
                             <div class="mb-3">
                                 <label for="images" class="form-label">URL ảnh đại diện:</label>
                                 <input type="text" class="form-control" id="images" name="images" value="${param.images}">

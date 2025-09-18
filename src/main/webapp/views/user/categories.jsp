@@ -21,7 +21,7 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4 text-center text-primary">Danh mục Video</h2>
-        
+        <h2>Bấm vào Tên danh mục để link sang danh sách video</h2>
         <a href="<c:url value='/home'/>" class="btn btn-secondary mb-4">
             <i class="bi bi-arrow-left-circle me-2"></i>Quay lại trang chủ
         </a>
@@ -55,7 +55,7 @@
                             <td>${STT.index+1}</td>
                             <td>${cate.categoryId}</td>
                             <td>
-                                <img src="${cate.images}" class="category-img" alt="${cate.categoryname} image"/>
+                                <img src="${pageContext.request.contextPath}/images/${cate.images}" class="category-img" alt="${cate.categoryname} image"/>
                             </td>
                             <td>
                                 <a href="<c:url value='/user/videosByCate'>

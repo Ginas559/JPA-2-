@@ -55,7 +55,7 @@
                             <td>${STT.index+1}</td>
                             <td>${cate.categoryId}</td>
                             <td>
-                                <img src="${cate.images}" class="category-img" alt="${cate.categoryname} image"/>
+                                <img src="${pageContext.request.contextPath}/images/${cate.images}" class="category-img" alt="${cate.categoryname} image"/>
                             </td>
                             <td>
                                 <a href="<c:url value='/user/videosByCate'>

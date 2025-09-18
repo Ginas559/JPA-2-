@@ -26,7 +26,7 @@
                 <h2 class="card-title mb-4">Hồ sơ người dùng</h2>
                 
                 <div class="mb-4">
-                    <img src="${user.images}" alt="User Image" class="profile-img">
+                    <img src="${pageContext.request.contextPath}/images/${user.images}" alt="User Image" class="profile-img">
                 </div>
                 
                 <ul class="list-group list-group-flush mb-4">

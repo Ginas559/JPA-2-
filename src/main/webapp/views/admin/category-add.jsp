@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 
+<h1>Thay cu up anh, sau khi bam insert no se hien len</h1>
 <form action="<c:url value='/admin/category/insert'/>" method="post" enctype="multipart/form-data">
     <label for="cname">Category name:</label><br>
     <input type="text" id="categoryname" name="categoryname"><br>

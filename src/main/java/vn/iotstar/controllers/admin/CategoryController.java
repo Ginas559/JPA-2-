@@ -100,7 +100,7 @@ public class CategoryController extends HttpServlet {
 					String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 					int index = filename.lastIndexOf(".");
 					String ext = filename.substring(index + 1);
-					fname = System.currentTimeMillis() + "." + ext;
+					String fname1 = filename;
 
 					// lưu vào thư mục webapp/images
 					String uploadPath = req.getServletContext().getRealPath("/images");
@@ -109,9 +109,9 @@ public class CategoryController extends HttpServlet {
 						uploadDir.mkdir();
 					}
 
-					part.write(uploadPath + File.separator + fname);
+					part.write(uploadPath + File.separator + fname1);
 
-					category.setImages(fname);
+					category.setImages(fname1);
 				} else {
 					// nếu không upload mới thì giữ ảnh cũ hoặc dùng avata.png
 					category.setImages(fileold != null ? fileold : "avata.png");
@@ -145,9 +145,9 @@ public class CategoryController extends HttpServlet {
 					String filename = Paths.get(part.getSubmittedFileName()).getFileName().toString();
 					int index = filename.lastIndexOf(".");
 					String ext = filename.substring(index + 1);
-					fname = System.currentTimeMillis() + "." + ext;
-					part.write(uploadPath + File.separator + fname);
-					category.setImages(fname);
+					String fname1 = filename;
+					part.write(uploadPath + File.separator + fname1);
+					category.setImages(fname1);
 				} else {
 					category.setImages("avata.png");
 				}

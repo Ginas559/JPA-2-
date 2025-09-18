@@ -21,7 +21,7 @@
 <body>
     <div class="container mt-5">
         <h2 class="mb-4 text-center text-primary">Quản lý Danh mục</h2>
-        
+        <h2>Bấm vào Tên danh mục để link sang danh sách video</h2>
         <div class="d-flex justify-content-between mb-4">
             <a href="<c:url value='/admin/dashboard'/>" class="btn btn-secondary">
                 <i class="bi bi-arrow-left me-2"></i>Quay lại Dashboard
@@ -61,7 +61,7 @@
                             <td>${STT.index+1}</td>
                             <td>${cate.categoryId}</td>
                             <td>
-                                <img src="${cate.images}" class="category-img" alt="${cate.categoryname} image"/>
+                                <img src="${pageContext.request.contextPath}/images/${cate.images}" width="150" alt="${cate.categoryname} image"/>
                             </td>
                             <td>
                                 <a href="<c:url value='/admin/videos'>
