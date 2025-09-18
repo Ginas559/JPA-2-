@@ -28,3 +28,4 @@ vn\iotstar\controllers\user\UserVideoController.class
 vn\iotstar\services\UserService.class
 vn\iotstar\dao\impl\CategoryDaoImpl.class
 vn\iotstar\dao\VideoDao.class
+vn\iotstar\controllers\user\UserVideosByCateController.class

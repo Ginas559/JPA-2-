@@ -28,7 +28,7 @@ public class UserVideoController extends HttpServlet {
 		String keyword = req.getParameter("keyword");
 
 		if ("search".equals(action) && keyword != null && !keyword.isEmpty()) {
-			List<Category> searchResults = categoryService.findByCategoryName(keyword);
+			List<Category> searchResults = categoryService.findByCategoryname(keyword);
 			req.setAttribute("listcate", searchResults);
 		} else {
 			List<Category> list = categoryService.findAll();

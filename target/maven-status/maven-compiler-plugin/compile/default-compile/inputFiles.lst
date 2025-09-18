@@ -10,6 +10,7 @@ D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\controllers\LogoutController.ja
 D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\controllers\RegisterController.java
 D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\controllers\user\UserProfileController.java
 D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\controllers\user\UserVideoController.java
+D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\controllers\user\UserVideosByCateController.java
 D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\dao\CategoryDao.java
 D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\dao\impl\CategoryDaoImpl.java
 D:\cc_ltw\workspace\JPA\src\main\java\vn\iotstar\dao\impl\UserDaoImpl.java
